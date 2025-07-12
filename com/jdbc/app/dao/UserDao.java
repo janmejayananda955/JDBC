@@ -2,6 +2,7 @@ package com.jdbc.app.dao;
 
 import com.jdbc.app.model.User;
 import com.jdbc.app.util.DBConnection;
+import com.jdbc.app.util.LoadingAnimation;
 
 import java.sql.*;
 
@@ -17,11 +18,14 @@ public class UserDao {
             ps.setString(2, user.getUser_Password());
             int result =ps.executeUpdate();
             if(result>0){
+                System.out.print("Data inserting");
+                new LoadingAnimation().animation();
+                System.out.println();
                 System.out.println("✅User inserted successfully");
                 ResultSet rs = ps.getGeneratedKeys() ;
                 while(rs.next()){
                     int id = rs.getInt(1);
-                    System.out.println("Congratulation🎉🎉 Your User_ID is " + '"'+"USER12300S"+id+'"');
+                    System.out.println("Congratulation🎉🎉 Your User_ID is " + '"'+"USER12300S"+id+'"'+"\n");
                 }
             }else{
                 System.out.println("❌User inserted unsuccessful");
@@ -43,7 +47,10 @@ public class UserDao {
             ps.setInt(1, id);
             int result = ps.executeUpdate();
             if(result>0){
-                System.out.println("✅User deleted successfully");
+                System.out.print("Data Deleting");
+                new LoadingAnimation().animation();
+                System.out.println();
+                System.out.println("✅User deleted successfully"+ "\n");
             }else {
                 System.out.println("❌User deletion unsuccessful");
             }
