@@ -26,6 +26,10 @@ public class MainApp {
                         break;
                     }
                     System.out.println("Enter user_Password:");
+                    if (userName.trim().isEmpty() || userName==null) {
+                        System.out.println("Name cannot be empty");
+                        break;
+                    }
                     String password = sc.next();
 //                    User newUser = new User(userName, password);
                     userDao.insertUser(new User(userName, password));

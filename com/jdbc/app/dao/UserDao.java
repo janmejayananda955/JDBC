@@ -74,7 +74,7 @@ public class UserDao {
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
         if(rs.next()){
-            String oldPassword = rs.getString("user_password");
+            String oldPassword = rs.getString("user_password");//get userPassword from DB
             System.out.print("Analizing password");
             new LoadingAnimation().animation();
             System.out.println();
