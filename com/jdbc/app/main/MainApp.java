@@ -21,11 +21,25 @@ public class MainApp {
                     //insert new user
                     System.out.println("Enter user_Name:");
                     String userName = sc.nextLine();
+                    if (userName.trim().isEmpty() || userName==null) {
+                        System.out.println("Name cannot be empty");
+                        break;
+                    }
                     System.out.println("Enter user_Password:");
                     String password = sc.next();
 //                    User newUser = new User(userName, password);
                     userDao.insertUser(new User(userName, password));
 
+                    break;
+
+                case 2:
+                    System.out.println("Enter user_ID:");
+                    String userId = sc.next();
+                    System.out.println("Enter user_OldPassword:");
+                    String oldPassword = sc.next();
+                    System.out.println("Enter user_NewPassword:");
+                    String newPassword = sc.next();
+                    userDao.updateUser(userId, oldPassword, newPassword);
                     break;
                 case 3:
                     //delete user
